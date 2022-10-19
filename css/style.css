@@ -1,0 +1,166 @@
+/* todo это для светлой и темной теме */
+:root {
+  --black: #000;
+  /* !ДЛЯ ТЕКСТА */
+  --text-color: #fff;
+  /* !ДЛЯ BACKGROUND BODY */
+  /* --background: #06283D; */
+  --background: linear-gradient(
+    to right bottom,
+    #591017,
+    #480f14,
+    #370d10,
+    #270a09,
+    #190101
+  );
+  /* !ДЛЯ CONTENT BACKGROUND, MODAL BACKGROUND, CARDS BACKGRNOUND */
+  --content-bg: #3c4048;
+  /* !ДЛЯ СПАН  ИЛИ БОРДЕР БОТТОМ*/
+  --red: #6c0202;
+}
+
+.darkMode {
+  --background: linear-gradient(
+    to right bottom,
+    #110a0b,
+    #17080a,
+    #1d0507,
+    #210305,
+    #250101
+  );
+
+  background: var(--background);
+  color: var(--text-color);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/* !SCROL TO TOP */
+#scrollTop {
+  position: fixed;
+  bottom: 150px;
+  right: 70px;
+  font-size: 40px;
+  z-index: 3;
+  transition: all 0.5s ease;
+  color: green;
+  cursor: pointer;
+}
+
+.isShown {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.isShown.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+/* !SCROL TO TOP END */
+
+body {
+  width: 100%;
+  font-family: "Roboto", sans-serif;
+  background: var(--background);
+  color: var(--text-color);
+  font-size: 16px;
+  font-weight: 400;
+  transition: all 0.5s ease;
+}
+
+button {
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ! PADDING МЕЖДУ БЛОКАМИ */
+.section-padding {
+  padding: 30px 0;
+}
+
+/* Comics Cards */
+.comics__cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+}
+.comics__card{
+  text-align: center;
+}
+.comics__card:hover .comics__card-back{
+  transform: rotateY(360deg);
+}
+.comics__card:hover .comics__card-front{
+  transform: rotateY(180deg);
+}
+
+.comics__content {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  perspective: 1000px;
+}
+.comics__content img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.comics__card-front {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  backface-visibility: hidden;
+}
+.comics__card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: goldenrod;
+  transition: transform 1s;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+}
+.comics__card-back img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: grayscale(1) blur(5px) brightness(50%);
+}
+.comics__title-back{
+  width: 90%;
+  margin: 5px auto;
+  border-bottom: 3px solid var(--red);
+}
